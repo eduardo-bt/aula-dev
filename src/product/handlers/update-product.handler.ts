@@ -9,10 +9,10 @@ export class UpdateProductHandler implements ICommandHandler<UpdateProductComman
 
   async execute(command: UpdateProductCommand) {
     const updateDTO = command.updateDTO;
-    const id = BigInt(command.id);
+    const id = command.id;
     const product = await this.productRepository.getMany({id});
 
-    if (!product) {
+    if (product.length === 0) {
       throw new HttpException(
         'Não foi possível atualizar o produto',
         HttpStatus.BAD_REQUEST,

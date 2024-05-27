@@ -28,7 +28,7 @@ export class ProductRepository {
     });
   }
 
-  async updateProduct(id: bigint, updateProductDto: UpdateProductDto) {
+  async updateProduct(id: number, updateProductDto: UpdateProductDto) {
     return await this.prisma.product.update({
       where: {id},
       data: updateProductDto,
